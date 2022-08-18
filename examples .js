@@ -21,6 +21,49 @@ function f(a) {
 f(5);
 
 
-import { repeat_pattern, heart, show } from "rune";
+import { repeat_pattern, heart, show, stack_frac, sail} from "rune";
 
-show(repeat_pattern(3,heart));
+
+/*function stackn (n, rune) {
+    return stack_frac (1/n, 
+    rune, 
+    stackn(n-1, rune);
+}
+
+show(stackn(3, heart));*/
+
+
+/*function stackn (n, rune) {
+    return n=== 1
+    ? rune
+    : stack_frac (1/n, rune, stackn (n-1, rune));
+}
+*/
+// Trisection of the heart
+show(stack_frac (1/3, heart, stack_frac(1/2, heart, heart)));
+
+// Quadrisection of the heart
+show(stack_frac (1/4, heart, stack_frac(1/3, heart, stack_frac(1/2, heart, heart))));
+
+
+/* WRONG example to generalise stack_frac idea of stacking:
+function stackn (n, rune) {
+    return stack_frac(1/n, rune, stackn (n-1, rune));
+}
+
+stackn (3, heart);
+
+
+^ shows that maximum call stack size exceeded!
+hence, we need to use 
+CONDITIONAL STATEMENTS in our function declarations.*/
+
+//example
+
+function stackn (n, rune) {
+    return ( n === 1
+    ? rune
+    : stack_frac (1/n, rune, stackn (n-1, rune)));
+}
+show(stackn(5, heart));
+
