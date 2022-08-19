@@ -5,7 +5,7 @@
 import {stack, make_cross, rcross, stack_frac, show, heart, circle, square, sail, quarter_turn_left, quarter_turn_right, beside_frac, turn_upside_down, blank, nova, corner} from "rune";
 
 
-show(make_cross(rcross));
+/*show(make_cross(rcross));
 
 show(stack (heart, rcross));
 
@@ -30,3 +30,32 @@ function repeat_pattern (n, pat, rune) {
 show(repeat_pattern(3, make_cross, heart)); 
 
 show (repeat_pattern(3, make_cross, heart));
+
+
+
+// final answer 
+
+function fractal(pic, n) {
+    // your answer here
+    return n === 1
+    ? pic
+    : beside (pic, stack (fractal(pic, n-1), fractal(pic, n-1)));
+}
+
+// Test
+show(fractal(make_cross(rcross), 5));
+
+
+// question 2 trials 
+
+function hook(frac) {
+    // your answer here
+    return frac >= 1
+    ? blank 
+    : stack_frac (frac, blank,  )
+    
+} */
+
+
+show(blank);
+show(square);
