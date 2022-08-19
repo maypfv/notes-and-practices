@@ -1,11 +1,11 @@
 
-// question 1 trials
+>> question 1 trials
 
 
 import {stack, make_cross, rcross, stack_frac, show, heart, circle, square, sail, quarter_turn_left, quarter_turn_right, beside_frac, turn_upside_down, blank, nova, corner} from "rune";
 
 
-/*show(make_cross(rcross));
+show(make_cross(rcross));
 
 show(stack (heart, rcross));
 
@@ -46,7 +46,7 @@ function fractal(pic, n) {
 show(fractal(make_cross(rcross), 5));
 
 
-// question 2 trials 
+>> question 2 trials 
 
 function hook(frac) {
     // your answer here
@@ -54,8 +54,28 @@ function hook(frac) {
     ? blank 
     : stack_frac (frac, blank,  )
     
-} */
+} 
 
 
 show(blank);
 show(square);
+
+
+// final answer 
+
+function hook(frac) {
+    // your answer here
+    return frac >= 1
+    ? square
+    : stack_frac (1/2, square, quarter_turn_right(
+        quarter_turn_right(
+        beside_frac(frac, square, blank))));
+}
+
+// Test
+show(hook(1/5));
+
+
+
+>> question 3 trials 
+
