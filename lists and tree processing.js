@@ -19,6 +19,12 @@ function tree_sum(my_tree) {
 function accumulate_tree(f, op, initial, tree) {
  return accumulate( /* your answer here */ , initial, tree);
 
+
+function accumulate_tree(f, op, initial, tree) {
+    return accumulate(op()
+        
+        , initial, tree);
+}
 // extra question
 function map(f, xs) {
 	return is_null
