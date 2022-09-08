@@ -1,23 +1,18 @@
-// qn 2
+// qn 1
 function flatten_list(xs) {
-    if (is_null(xs)) {
+    return accumulate(append, null, xs);
+}
+
+// qn 2
+function tree_sum(my_tree) {
+    if (is_null(tree)) { 
         return 0;
-    } else if (!is_list(xs)) {
-        head(xs) + flatten_list(tail(xs));
-    } else { pair(flatten_list(head(xs)), flatten_list(tail(xs)));
-}
+    } else if (is_list(head(tree))) {
+        tree_sum(head(tree)) + tree_sum(tail(tree));
+    } else { head(tree) + tree_sum(tail(tree))
+    }
 }
 
-const LoL = list(list(1,2), list(3,4));
-/*function flatten_list(xs) {
-    return is_null(xs) 
-            ? 0
-            : !is_list(xs)
-            ? 
-            : pair(flatten_list(head(xs)), flatten_list(tail(xs)));
-}*/
-
-flatten_list(LoL);
 
 
 //qn 3
@@ -53,6 +48,7 @@ function accumulate(f, initial, xs) {
 			: f(head(xs), accumulate(f, initial, tail(xs)));
 }
 
->> f is a binary operator, takes in 2 arguments
+>> f is a binary operator, takes in 2 arguments 
+
 
 
