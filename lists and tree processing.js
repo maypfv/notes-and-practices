@@ -14,7 +14,6 @@ function tree_sum(my_tree) {
 }
 
 
-
 //qn 3
 
 function accumulate_tree(f, op, initial, tree) {
