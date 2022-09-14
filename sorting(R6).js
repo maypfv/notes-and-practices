@@ -74,6 +74,7 @@ function merge(xs, ys) {
     }
 }
 
+
 // a list with more than one element is sorted
 // by splitting it into two lists of (almost) equal
 // length, sorting the halves and then merging them
