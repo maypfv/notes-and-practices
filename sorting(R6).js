@@ -27,11 +27,17 @@ const xs = list(6, 3, 8, 5, 1, 9, 6, 4, 2, 7);
 // Result: list(9, 8, 7, 6, 6, 5, 4, 3, 2, 1)
 
 // (c)
- insertion_sort_cmp(xs, (x, y) => x === y);
+ insertion_sort_cmp(xs, (x, y) => false);
 // Result: list(7, 2, 4, 6, 9, 1, 5, 8, 3, 6)
 
 // (d)
- insertion_sort_cmp(xs, (x, y) => x % 2 === 0 && x < y) ;
+ insertion_sort_cmp(xs, (x, y) => x % 2 === 0 && y % 2 === 0
+                                    ? x <= y
+                                    : x % 2 === 0 && y % 2 === 1
+                                    ? true
+                                    : x % 2 === 1 && y % 2 === 1
+                                    ? x >= y
+                                    : false) ;
 // Result: list(2, 4, 6, 6, 8, 9, 7, 5, 3, 1)
 // half, rounded downwards
 
