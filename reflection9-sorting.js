@@ -89,19 +89,41 @@ b(5);
 
 // qn 2
 
-// function fibs(n) {
-//     const fibi = [0, 1];
-//     for (let i = 2; i <= n; i = i + 1) {
-//         fibi[i] = fibi[i - 2] + fibi[i - 1];
+function fibs(n) {
+    const fibi = [0, 1];
+    for (let i = 2; i <= n; i = i + 1) {
+        fibi[i] = fibi[i - 2] + fibi[i - 1];
         
-//     }
-//     return fibi;
-// }
+    }
+    return fibi;
+}
 
-// fibs(5);
+fibs(5);
 
 
+function fib_iter(n) {
+    function iter(a, b, count) {
+        return count === 0  
+               ? a 
+               : iter(a + b, a, count - 1);
+    }
+    return iter(0, 1, n);
+}
 
+fib_iter(8);
+
+function fib2(n) {
+    let fib1 = 1;
+    let fib2 = 0;
+    for (let i = 2; i <= n; i = i + 1) {
+        const temp = fib1;
+        fib1 = fib1 + fib2;
+        fib2 = temp;
+    }
+    return fib1;
+}
+
+fib2(5);
 
 
 
