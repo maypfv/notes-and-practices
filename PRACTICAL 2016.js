@@ -233,11 +233,23 @@ function check_winning_group(bet_nums, draw_nums, extra_num) {
 // // Question 3A
 // ////////////////////////////////////////////////////////////
 
-// function evaluate_BAE_tree(bae_tree) {
-
-//     // WRITE HERE.
-
-// }
+function evaluate_BAE_tree(bae_tree) {
+    function operator(L) {
+        const op = list_ref(L, 2);
+        const lhs = list_ref(L, 1);
+        const rhs = list_ref(L, 3);
+        return op === "+" 
+              ?evaluate_BAE_tree(lhs) + evaluate_BAE_tree(rhs)
+              :op === "-"
+              ?evaluate_BAE_tree(lhs) - evaluate_BAE_tree(rhs)
+              :op === "*"
+              ?evaluate_BAE_tree(lhs) * evaluate_BAE_tree(rhs)
+              :op === "/"
+              ?evaluate_BAE_tree(lhs) / evaluate_BAE_tree(rhs)
+              :
+    }
+    return is_number(bae_tree) ? bae_tree : operator(bae_tree);
+}
 
 
 
