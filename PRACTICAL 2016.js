@@ -134,7 +134,7 @@ function all_genes(xs) {
     function helper(L, accum) {
         return is_null(L) || (is_null(tail(L))) 
               ?accum
-              :helper(remove(head(find_gene_end(head(find_gene_start(L)))), L), 
+              :helper(member(tail(head(find_gene_start(L))), L), 
                                 append(head(find_gene_end(head(find_gene_start(L)))), accum));
     }
     return helper(xs,list(null));
@@ -143,18 +143,14 @@ function all_genes(xs) {
 all_genes(list("T", "A", "T", "G", "C", "A", "T",
  "A", "A", "G", "T", "A", "G", "A",
  "T", "G", "A", "T", "G", "A", "T"));
-
-
 // returns list(list("C", "A"), list("A"))
 
-// // Question 2A
-// ////////////////////////////////////////////////////////////
+// Question 2A
+////////////////////////////////////////////////////////////
 
-// function all_different(nums) {
-
-//     // WRITE HERE.
-
-// }
+function all_different(nums) {
+    
+}
 
 
 
