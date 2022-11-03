@@ -149,7 +149,17 @@ all_genes(list("T", "A", "T", "G", "C", "A", "T",
 ////////////////////////////////////////////////////////////
 
 function all_different(nums) {
-    
+    const len = length(nums);
+    for (let i = len - 1; i >= 0; i = i - 1) {
+        for (let j = 0; j < i; j = j + 1) {
+            if (list_ref(nums, j) !== list_ref(nums, i)) {
+            
+            } else {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 
