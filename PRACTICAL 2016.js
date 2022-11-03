@@ -70,8 +70,10 @@ function find_gene_start(xs) {
         return null;
     } else if (head(xs) === "A") {
         return head(tail(xs)) === "T"
-               ? head(tail(tail(xs))) === "G" ? list(tail(tail(tail(xs)))) : find_gene_start(tail(xs))
-               : find_gene_start(tail(xs));
+               ?head(tail(tail(xs))) === "G" 
+                    ?list(tail(tail(tail(xs)))) 
+                        :find_gene_start(tail(xs))
+               :find_gene_start(tail(xs));
     } else {
         return find_gene_start(tail(xs));
     }
