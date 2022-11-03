@@ -295,8 +295,18 @@ function evaluate_BAE(bae_list) {
 // // Question 3D
 // ////////////////////////////////////////////////////////////
 
-// function check_parentheses(paren_list) {
+function check_parentheses(paren_list) {
+    function helper(xs, n) {
+        if (is_null(xs)) {
+            return n === 0 ? true : false;
+        } else if (n < 0) {
+           return false; 
+        } else if (head(xs) === "(") {
+           return helper(tail(xs), n + 1);
+        } else {
+            return helper(tail(xs), n - 1);
+        }
+    }
+    return helper(paren_list, 0);
 
-//     // WRITE HERE.
-
-// }
+}
