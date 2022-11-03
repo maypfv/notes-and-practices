@@ -115,8 +115,14 @@ function find_gene_end(xs) {
     return helper(xs, null);
 }
 
-// member(list("T", "A", "G"), list("A", "T", "A", "C", "T", "A", "G",
-//  "A", "T", "A", "A"));
+find_gene_end(list("A", "T", "A", "C", "T", "A", "G",
+ "A", "T", "A", "A"));
+// returns list(list("A", "T", "A", "C"))
+find_gene_end(list("T", "G", "A", "A", "T", "A", "C"));
+// returns list(null)
+find_gene_end(list("A", "T", "A", "C", "C", "A", "G",
+ "A", "T"));
+// returns null
 
 
 
@@ -124,11 +130,9 @@ function find_gene_end(xs) {
 // // Question 1G
 // ////////////////////////////////////////////////////////////
 
-// function all_genes(xs) {
-
-//     // WRITE HERE.
-
-// }
+function all_genes(xs) {
+    
+}
 
 // // Question 2A
 // ////////////////////////////////////////////////////////////
