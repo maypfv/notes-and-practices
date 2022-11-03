@@ -285,11 +285,9 @@ function build_BAE_tree(bae_list) {
 // // Question 3C
 // ////////////////////////////////////////////////////////////
 
-// function evaluate_BAE(bae_list) {
-
-//     // WRITE HERE.
-
-// }
+function evaluate_BAE(bae_list) {
+    return evaluate_BAE_tree(build_BAE_tree(bae_list));
+}
 
 
 
