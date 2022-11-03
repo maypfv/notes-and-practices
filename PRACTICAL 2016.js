@@ -187,11 +187,20 @@ function is_valid_toto_set(nums, n, min, max) {
 // // Question 2C
 // ////////////////////////////////////////////////////////////
 
-// function num_of_matches(numsA, numsB) {
-
-//     // WRITE HERE.
-
-// }
+function num_of_matches(numsA, numsB) {
+    function helper(xs, ys, n) {
+        if (is_null(xs)) {
+            return n;
+        } else if (is_null(ys)) {
+            return n;
+        } else {
+            return !is_null(member(head(xs), ys))
+                   ?helper(tail(xs), ys, n + 1)
+                   :helper(tail(xs), ys, n);
+        }
+    }
+    return helper(numsA, numsB, 0);
+}
 
 
 
