@@ -82,7 +82,7 @@ function find_gene_start(xs) {
 find_gene_start(list("A", "C", "A", "T", "G", "T", "A", "C"));
 // returns list(list("T", "A", "C"))
 find_gene_start(list("A", "T", "A", "G", "T", "A", "T", "G"));
-returns list(null)
+// returns list(null)
 find_gene_start(list("A", "T", "A", "G", "T", "A", "C", "G"));
 // returns null
 
@@ -93,8 +93,30 @@ find_gene_start(list("A", "T", "A", "G", "T", "A", "C", "G"));
 // ////////////////////////////////////////////////////////////
 
 function find_gene_end(xs) {
-    
+     function helper(L, accum) {
+        if (is_null(L)) {
+            return null;
+        } else if (head(L) === "T" && !is_null(tail(L))) {
+            return head(tail(L)) === "A" && (!is_null(tail(tail(L))))
+                   ? (head(tail(tail(L))) === "G" || head(tail(tail(L))) === "A" 
+                      ?list(reverse(accum))
+                      :helper(tail(L), pair(head(L), accum)))
+                   : (head(tail(L)) === "G" && (!is_null(tail(tail(L))))
+                      ?(head(tail(tail(L))) === "A" 
+                        ?list(reverse(accum))
+                        :helper(tail(L),
+                                    pair(head(L),
+                                         accum)))
+                      :helper(tail(L), pair(head(L), accum)));
+        } else { 
+            return helper(tail(L), pair(head(L), accum));
+        }
+    }
+    return helper(xs, null);
 }
+
+// member(list("T", "A", "G"), list("A", "T", "A", "C", "T", "A", "G",
+//  "A", "T", "A", "A"));
 
 
 
@@ -198,4 +220,3 @@ function find_gene_end(xs) {
 //     // WRITE HERE.
 
 // }
-
