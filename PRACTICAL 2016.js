@@ -208,11 +208,26 @@ function num_of_matches(numsA, numsB) {
 // // Question 2D
 // ////////////////////////////////////////////////////////////
 
-// function check_winning_group(bet_nums, draw_nums, extra_num) {
-
-//     // WRITE HERE.
-
-// }
+function check_winning_group(bet_nums, draw_nums, extra_num) {
+    const n = length(draw_nums);
+    const matches = num_of_matches(bet_nums, draw_nums);
+    function helper(xs, ys, x, wgn) {
+        if (matches === x) {
+            return wgn + 1;
+        } else if (matches === x - 1) {
+            return !is_null(member(extra_num, bet_nums))
+                   ? wgn + 2
+                   : wgn + 3;
+        } else if (matches === x - 2) {
+            return !is_null(member(extra_num, bet_nums))
+                   ? wgn + 4
+                   : wgn + 5;
+        } else {
+            return wgn;
+        }
+    }
+    return helper(bet_nums, draw_nums, n, 0);
+}
 
 
 // // Question 3A
