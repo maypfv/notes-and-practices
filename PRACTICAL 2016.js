@@ -168,11 +168,9 @@ function all_different(nums) {
 // // Question 2B
 // ////////////////////////////////////////////////////////////
 
-// function is_valid_toto_set(nums, n, min, max) {
-
-//     // WRITE HERE.
-
-// }
+function is_valid_toto_set(nums, n, min, max) {
+    
+}
 
 
 
