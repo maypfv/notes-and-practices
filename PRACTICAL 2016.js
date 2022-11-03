@@ -234,21 +234,22 @@ function check_winning_group(bet_nums, draw_nums, extra_num) {
 // ////////////////////////////////////////////////////////////
 
 function evaluate_BAE_tree(bae_tree) {
-    function operator(L) {
-        const op = list_ref(L, 2);
-        const lhs = list_ref(L, 1);
-        const rhs = list_ref(L, 3);
+   if (is_number(bae_tree)) {
+       return bae_tree;
+   } else {
+        const op = list_ref(bae_tree, 1);
+        const lhs = list_ref(bae_tree, 0);
+        const rhs = list_ref(bae_tree, 2);
         return op === "+" 
-              ?evaluate_BAE_tree(lhs) + evaluate_BAE_tree(rhs)
-              :op === "-"
-              ?evaluate_BAE_tree(lhs) - evaluate_BAE_tree(rhs)
-              :op === "*"
-              ?evaluate_BAE_tree(lhs) * evaluate_BAE_tree(rhs)
-              :op === "/"
-              ?evaluate_BAE_tree(lhs) / evaluate_BAE_tree(rhs)
-              :
-    }
-    return is_number(bae_tree) ? bae_tree : operator(bae_tree);
+              ? evaluate_BAE_tree(lhs) + evaluate_BAE_tree(rhs)
+              : op === "-"
+              ? evaluate_BAE_tree(lhs) - evaluate_BAE_tree(rhs)
+              : op === "*"
+              ? evaluate_BAE_tree(lhs) * evaluate_BAE_tree(rhs)
+              : op === "/"
+              ? evaluate_BAE_tree(lhs) / evaluate_BAE_tree(rhs)
+              : 0;
+   }
 }
 
 
