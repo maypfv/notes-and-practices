@@ -69,7 +69,7 @@ function find_gene_start(xs) {
     if (is_null(xs)) {
         return null;
     } else if (head(xs) === "A") {
-        return head(tail(xs)) === "T"
+        return head(tail(xs)) === "T" && (!is_null(tail(tail(xs))))
                ?head(tail(tail(xs))) === "G" 
                     ?list(tail(tail(tail(xs)))) 
                         :find_gene_start(tail(xs))
@@ -131,8 +131,21 @@ find_gene_end(list("A", "T", "A", "C", "C", "A", "G",
 // ////////////////////////////////////////////////////////////
 
 function all_genes(xs) {
-    
+    function helper(L, accum) {
+        return is_null(L) || (is_null(tail(L))) 
+              ?accum
+              :helper(remove(head(find_gene_end(head(find_gene_start(L)))), L), 
+                                append(head(find_gene_end(head(find_gene_start(L)))), accum));
+    }
+    return helper(xs,list(null));
 }
+
+all_genes(list("T", "A", "T", "G", "C", "A", "T",
+ "A", "A", "G", "T", "A", "G", "A",
+ "T", "G", "A", "T", "G", "A", "T"));
+
+
+// returns list(list("C", "A"), list("A"))
 
 // // Question 2A
 // ////////////////////////////////////////////////////////////
