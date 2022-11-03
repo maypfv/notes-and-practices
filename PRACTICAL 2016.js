@@ -258,11 +258,26 @@ function evaluate_BAE_tree(bae_tree) {
 // // Question 3B
 // ////////////////////////////////////////////////////////////
 
-// function build_BAE_tree(bae_list) {
-
-//     // WRITE HERE.
-
-// }
+function build_BAE_tree(bae_list) {
+     function advance() {
+        bae_list = tail(bae_list);
+    }
+    function helper() {
+        const elem = head(bae_list);
+        if (elem === "(") {
+            advance();
+            const left = helper(); // recursive, move out alr
+            const op = head(bae_list);
+            advance();
+            const right = helper();
+            advance();
+            return list(left, op, right);
+        }
+        advance();
+        return elem;
+    }
+    return helper();
+}
 
 
 
