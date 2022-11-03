@@ -168,9 +168,15 @@ function all_different(nums) {
 // // Question 2B
 // ////////////////////////////////////////////////////////////
 
-function is_valid_toto_set(nums, n, min, max) {
-    
-}
+// function is_valid_toto_set(nums, n, min, max) {
+//     const len = length(nums);
+//     const range = enum_list(min, max);
+//     return len !== n && !all_different(nums)
+//           ?false;
+//           :(!is_null(member(head(nums), range))
+//                 ?is_valid_toto_set(tail(nums), n - 1, min, max)
+//                 :false);
+// }
 
 
 
