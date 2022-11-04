@@ -53,12 +53,24 @@ function assert(test_name, test_func, truth, dependence) {
 // TASK 1A
 //===============================================================
 function make_big_int_from_number(num) {
-    const len = math_ceil(math_log10(num));
-    const integer = num % 10; 
-    const num2 = (num - integer) / 10;
-    return num === 0 
-           ? (len > 0 ? pair(0, null) : null)
-           : pair(integer, make_big_int_from_number(num2));
+    function helper(n) {
+        const len = math_ceil(math_log10(n));
+        const integer = n % 10;
+        const num2 = (n - integer) / 10;
+        if (n === 0) {
+            return null;
+        } else {
+           for (let i = 0; i <= len; i = i + 1) {
+            return pair(integer, helper(num2));
+        }  
+        }
+    }
+    if (num === 0) {
+        return list(0);
+    } else {
+        const final = helper(num);
+        return final;
+    }
 
 }
 
@@ -83,18 +95,13 @@ assert("1A_5", () => make_big_int_from_number(9876543210),
 // TASK 1B
 //===============================================================
 function big_int_to_string(bint) {
-    function helper(xs, accum) {
-        if (is_null(xs)) {
-            return accum;
-        } else {
-            const len = length(xs);
-            const digit = head(xs);
-            const int = digit * math_pow(10, len - 1);
-            return helper(tail(xs), int + accum);
-        }
+    function helper(xs) {
+        let temp = "";
+        return is_null(xs) 
+                ? ""
+                : temp = temp + stringify(head(xs)) + helper(tail(xs));
     }
-    const x = helper(reverse(bint), 0);
-    return stringify(x);
+    return helper(reverse(bint));
 }
 
 
@@ -177,7 +184,6 @@ function big_int_mult_by_digit(bint, digit) {
             return helper(tail(xs), int + accum);
         }
     }
-
         const x = helper(reverse(bint), 0);
         const y = digit;
         const mul = x * y;
