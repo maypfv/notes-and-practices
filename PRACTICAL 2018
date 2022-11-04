@@ -148,17 +148,17 @@ function big_int_add(bintX, bintY) {
              return (carry === 0) ? null : pair(carry, null);
         } else if (is_null(x)) {
             const sum = head(y) + carry;
-            const num = math_floor(sum % 10);
+            const num = sum % 10;
             const carried = (sum - num) / 10;
             return pair(num, add(x, tail(y), carried));
         } else if (is_null(y)) {
             const sum = head(x) + carry;
-            const num = math_floor(sum % 10);
+            const num = sum % 10;
             const carried = (sum - num) / 10;
             return pair(num, add(tail(x), y, carried));
         } else {
                 const sum = head(x) + head(y) + carry;
-                const num = math_floor(sum % 10);
+                const num = sum % 10;
                 const carried = (sum - num) / 10;
                 return pair(num, 
                          add(tail(x), tail(y), carried));
@@ -189,19 +189,17 @@ assert("1C_6", () => big_int_add(
 // TASK 1D
 //===============================================================
 function big_int_mult_by_digit(bint, digit) {
-    function helper(xs, pow) {
-        let temp = 0;
-        return is_null(xs) 
-                ? 0
-                : temp + head(xs) * math_pow(10, pow)  
-                            + helper(tail(xs), pow - 1);
+    function mul(x, y, carry) {
+        if (!is_null(x)) {
+            const muli = head(x) * y + carry;
+            const num = muli % 10;
+            const carried = (muli - num) / 10;
+            return y === 0 ? pair(0, null) : pair(num, mul(tail(x), y, carried));
+        } else {
+            return carry === 0 ? null : pair(carry, null);
+        }
     }
-    const lenx = length(bint);
-    const x = helper(reverse(bint), lenx - 1);
-    const y = digit;
-    const sum = x * y;
-    return make_big_int_from_number(sum);
-
+     return mul(bint, digit, 0);
 }
 
 
