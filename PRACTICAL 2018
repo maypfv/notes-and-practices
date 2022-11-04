@@ -220,7 +220,16 @@ assert("1D_4", () => big_int_mult_by_digit(
 // TASK 1E
 //===============================================================
 function big_int_mult_by_10_pow_n(bint, n) {
-
+    function mul(x, pow) {
+        if (!is_null(x)) {
+            const muli = head(x) * math_pow(10, pow);
+            return pair(muli, mul(tail(x), pow + 1));
+        } else {
+            return null;
+        }
+    }
+    return accumulate((xs, ys) => big_int_add(xs, ys), null, 
+        map(x => make_big_int_from_number(x), mul(bint, n)));
 }
 
 
