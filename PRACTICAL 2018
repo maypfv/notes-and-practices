@@ -510,9 +510,7 @@ assert("2C_11", () => build_nth_largest_int([5], 10),
 // TASK 3A(I)
 //===============================================================
 function count_lower_neighbors(emap, r, c) {
-
-    // WRITE HERE.
-
+    
 }
 
 
