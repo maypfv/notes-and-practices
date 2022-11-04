@@ -167,9 +167,21 @@ assert("1C_6", () => big_int_add(
 // TASK 1D
 //===============================================================
 function big_int_mult_by_digit(bint, digit) {
+     function helper(xs, accum) {
+        if (is_null(xs)) {
+            return accum;
+        } else {
+            const len = length(xs);
+            const digit = head(xs);
+            const int = digit * math_pow(10, len - 1);
+            return helper(tail(xs), int + accum);
+        }
+    }
 
-    // WRITE HERE.
-
+        const x = helper(reverse(bint), 0);
+        const y = digit;
+        const mul = x * y;
+        return make_big_int_from_number(mul);
 }
 
 
