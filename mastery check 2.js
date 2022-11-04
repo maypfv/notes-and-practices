@@ -1,6 +1,3 @@
-
-
-
 function compute_catalan(n) {
     let temp = 0;
     if (n === 0) {
