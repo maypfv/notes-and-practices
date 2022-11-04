@@ -220,16 +220,13 @@ assert("1D_4", () => big_int_mult_by_digit(
 // TASK 1E
 //===============================================================
 function big_int_mult_by_10_pow_n(bint, n) {
-    function mul(x, pow) {
-        if (!is_null(x)) {
-            const muli = head(x) * math_pow(10, pow);
-            return pair(muli, mul(tail(x), pow + 1));
-        } else {
-            return null;
-        }
+    function helper(xs, pow) {
+        const len = length(xs);
+        const final_len = len + pow;
+        const addlist = build_list(x => 0, final_len);
+        return big_int_add(xs, addlist);
     }
-    return accumulate((xs, ys) => big_int_add(xs, ys), null, 
-        map(x => make_big_int_from_number(x), mul(bint, n)));
+    return head(bint) === 0 ? bint : reverse(helper(reverse(bint), n));
 }
 
 
@@ -252,9 +249,7 @@ assert("1E_4", () => big_int_mult_by_10_pow_n(list(5,8,3,1), 20),
 // TASK 1F
 //===============================================================
 function big_int_mult(bintX, bintY) {
-
-    // WRITE HERE.
-
+    
 }
 
 
