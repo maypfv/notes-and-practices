@@ -25,6 +25,7 @@ function mcat(n) {
         return mem[n];
     } else {
      if (n === 0) {
+            mem[0] = 1;
             return 1;
         } else {
             for(let i = 0; i < n; i = i + 1) {
@@ -38,8 +39,8 @@ function mcat(n) {
 
 mcat(5);
 mcat(20);
-mem[3];
+mem[0];
 
-compute_catalan(4);
+
 
 
