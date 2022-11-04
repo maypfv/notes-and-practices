@@ -453,10 +453,29 @@ assert("2B_6", () => build_2nd_largest_int([5,5,5,5,5,5,5,5,5,5]),
 // TASK 2C
 //===============================================================
 function build_nth_largest_int(digits, n) {
-
-    // WRITE HERE.
-
+    function largest_int(arr) {
+        const arr2 = copy_array(digits);
+        sort_ascending(arr2);
+        reverse_array(arr2);
+        return arr2;
+    }   
+        function check(array) {
+        const len = array_length(array);
+        const temp = largest_int(array);
+        for(let j = 1; j < n; j = j + 1) {
+            for (let i = len - 1; i > 0; i = i - 1) {
+                if (temp[i - 1] > temp[i]) {
+                swap(temp, i, i - 1);
+                break;
+                }
+            }
+        }
+        return temp;
+    }
+    return digits_to_string(check(digits));
+    
 }
+
 
 
 // TASK 2C TESTS
