@@ -8,7 +8,6 @@ function compute_catalan(n) {
         temp = compute_catalan(i) * compute_catalan(n-1-i) + temp;
         i = i + 1;
         }
-        // for(let i = 0; i < n; i = i + 1) {
     }
     return temp;
   }
