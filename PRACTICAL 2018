@@ -510,7 +510,23 @@ assert("2C_11", () => build_nth_largest_int([5], 10),
 // TASK 3A(I)
 //===============================================================
 function count_lower_neighbors(emap, r, c) {
-    
+    const len_row = array_length(emap);
+    const len_col = array_length(emap[0]);
+    if (r <= 0 || (len_row - 1) <= r || c <= 0 || (len_col - 1) <= c) {
+        return 0;
+    } else {
+        let result = 0;
+        for (let i = r - 1; i <= r + 1; i = i + 1) {
+            for (let j = c - 1; j <= c + 1; j = j + 1) {
+                // const check = emap[r][c];
+                if (emap[i][j] < emap[r][c]) {
+                    result = result + 1;
+                } else {}
+            }
+        }
+        return result;
+    }
+
 }
 
 
@@ -536,9 +552,17 @@ assert("3A(I)_8", () => count_lower_neighbors(emapA1, 4, 4), 6, []);
 // TASK 3A(II)
 //===============================================================
 function count_peaks(emap) {
-
-    // WRITE HERE.
-
+    let count = 0;
+    const len_r = array_length(emap);
+    const len_c = array_length(emap[0]);
+    for (let i = 0; i < len_r; i = i + 1) {
+        for (let j = 0; j < len_c; j = j + 1) {
+            if (count_lower_neighbors(emap, i, j) === 8) {
+                count = count + 1;
+            } else {}
+        }
+    }
+    return count;
 }
 
 
@@ -574,9 +598,44 @@ assert("3A(II)_4", () => count_peaks(emapA2b),
 // TASK 3B
 //===============================================================
 function count_islands(emap) {
+    const R = array_length(emap);    // emap size is R x C.
+    const C = array_length(emap[0]); // emap size is R x C.
+    const label = [];                // 2D array for labelling islands.
+    let island_count = 0;
 
-    // WRITE HERE.
+    // The function island "floods" an entire island with
+    // the label island_id, starting from the position (row, col).
+    function label_island(row, col, island_id) {
+        if ( row >= 0 && row < R && col >= 0 && col < C ) {
+            if ( emap[row][col] !== 0 && label[row][col] === 0 ) {
+                label[row][col] = island_id;
+                label_island(row, col - 1, island_id);
+                label_island(row, col + 1, island_id);
+                label_island(row - 1, col, island_id);
+                label_island(row + 1, col, island_id);
+            } else {}
+        } else {}
+    }
 
+    // The labels are initialized to 0.
+    // The islands are going to be labelled from 1 onwards.
+    for (let row = 0; row < R; row = row + 1) {
+        label[row] = [];
+        for (let col = 0; col < C; col = col + 1) {
+            label[row][col] = 0;
+        }
+    }
+
+    for (let row = 0; row < R; row = row + 1) {
+        for (let col = 0; col < C; col = col + 1) {
+            if (emap[row][col] !== 0 && label[row][col] === 0) {
+                island_count = island_count + 1;
+                label_island(row, col, island_count);
+            } else {}
+        }
+    }
+    return island_count;
+    // ---END TASK---
 }
 
 
